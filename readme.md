@@ -116,7 +116,7 @@ Your `<end>` tag should look like this :
 	</end>
 
 
-## Run project
+## Build project
 Run your project with following command. (While in Github repository folder created earlier)
 
 	gos --run
