@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gos>
+	<!-- xml docs : http://golangserver.com/docs/markup.html -->
+	<deploy>faas</deploy>
+	<port>8090</port>
+	<package>if-package-is-library</package>
+	<not_found>/your-404-page</not_found>
+	<error>/your-500-page</error>
+
+	<output>application.go</output>
+	<domain></domain><!-- Cookie domain -->
+	<main>	
+	//psss go code here : func main()
+	</main>
+
+
+	<key>a very very very very secret key</key>
+	
+	<header> 
+	<struct name="Testmodel" >
+	//interface fields here
+	FieldOne string
+	FieldTwo int
+	FieldThree []string
+	</struct>
+	</header>
+	<methods>
+		
+	</methods>
+
+	<templates>
+
+	</templates>
+	<endpoints>
+  
+	<end path="/test/json" type="GET" >
+	//Golang code here
+	testmodel := Testmodel{FieldOne: "Value", FieldTwo:400, FieldThree:[]string{"value1","value2"}}
+	response = mResponse(testmodel)
+	</end>
+	</endpoints>
+</gos>
