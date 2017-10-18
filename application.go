@@ -218,14 +218,13 @@ import (
 				if  isURL := (r.URL.Path == "/test/json" && r.Method == strings.ToUpper("GET") );!callmet && isURL{ 
 					
 	//Golang code here
-		 decoder := json.NewDecoder(req.Body)
-		  var t test_struct
+		 decoder := json.NewDecoder(r.Body)
+		 var t TestModel
 		 err := decoder.Decode(&t)
 		 if err != nil {
 		       response =  mResponse(err)
 		 } else {
-
-			testmodel := Testmodel{FieldOne: "Value", FieldTwo:400, FieldThree:[]string{"value1","value2"}}
+			testmodel := Testmodel{FieldOne: t.FieldOne, FieldTwo:400, FieldThree:[]string{"value1","value2"}}
 			response = mResponse(testmodel)
 		}
 	
