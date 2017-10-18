@@ -226,7 +226,7 @@ import (
 		 } 
 		t.FieldOne = "NewValue"
 		response = mResponse(t)
-		defer req.Body.Close()
+		defer r.Body.Close()
 	
 					callmet = true
 				}
