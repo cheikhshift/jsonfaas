@@ -6,7 +6,7 @@
 	<package>if-package-is-library</package>
 	<not_found>/your-404-page</not_found>
 	<error>/your-500-page</error>
-
+	<import src="encoding/json"/>
 	<output>application.go</output>
 	<domain></domain><!-- Cookie domain -->
 	<main>	
@@ -35,8 +35,16 @@
   
 	<end path="/test/json" type="GET" >
 	//Golang code here
-	testmodel := Testmodel{FieldOne: "Value", FieldTwo:400, FieldThree:[]string{"value1","value2"}}
-	response = mResponse(testmodel)
+		 decoder := json.NewDecoder(req.Body)
+		  var t test_struct
+		 err := decoder.Decode(&t)
+		 if err != nil {
+		       response =  mResponse(err)
+		 } else {
+
+			testmodel := Testmodel{FieldOne: "Value", FieldTwo:400, FieldThree:[]string{"value1","value2"}}
+			response = mResponse(testmodel)
+		}
 	</end>
 	</endpoints>
 </gos>
