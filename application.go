@@ -219,7 +219,7 @@ import (
 					
 	//Golang code here
 		 decoder := json.NewDecoder(r.Body)
-		 var t TestModel
+		 var t Testmodel
 		 err := decoder.Decode(&t)
 		 if err != nil {
 		       response =  mResponse(err)
