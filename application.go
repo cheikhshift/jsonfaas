@@ -222,11 +222,11 @@ import (
 		 var t Testmodel
 		 err := decoder.Decode(&t)
 		 if err != nil {
-		    response =  mResponse(bson.M{"error":err.Error() })
-		 } else {
-			testmodel := Testmodel{FieldOne: t.FieldOne, FieldTwo:400, FieldThree:[]string{"value1","value2"}}
-			response = mResponse(testmodel)
-		}
+		    panic(err)
+		 } 
+		t.FieldOne = "NewValue"
+		response = mResponse(t)
+	
 	
 					callmet = true
 				}
