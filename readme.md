@@ -111,7 +111,8 @@ Your `<end>` tag should look like this :
 		 } 
 		t.FieldOne = "NewValue"
 		response = mResponse(t)
-	
+		//defered to keep body open if plan on using again.
+		defer r.Body.Close()
 	</end>
 
 
