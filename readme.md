@@ -76,22 +76,22 @@ Add the following snippet within the `<endpoints>` tag of your `gos.gxml` file. 
 
 	var t Testmodel	
 
-2. Add the following snippet within your newly placed `<end>` tag. Return a new `json.Decoder` with the input stream of your request's body. The syntax here is `r.Body` to refer to body input stream (In FaaS request body). The variable `r` is available to  GO code with`<end>` tags. IT refers to the request (`*http.Request`).
+2. Add the following snippet within your newly placed `<end>` tag. It will create a new `json.Decoder` with the input stream of your request's body. The body input stream is referred to as  `r.Body` (AKA FaaS request body). The variable `r` is available to  GO code within `<end>` tags. It refers to the current request (`*http.Request`).
 
 	decoder := json.NewDecoder(r.Body)
 
 
-3. Add the following snippet within your newly placed `<end>` tag. This will attempt to convert your request body into interface `Testmodel`. Your request body data will be available with variable `t` The variable `err` declared within the snippet will be used to check for errors.
+3. Add the following snippet within your newly placed `<end>` tag. This will attempt to decode your request body into the interface of `t` (`Testmodel`). Your request body data will then be available with variable `t`. The variable `err` declared within the snippet will be used to check for errors.
 
 	err := decoder.Decode(&t)	
 	
-4. Add the following snippet within your newly placed `<end>` tag. Evaluate if error is `nil`, if so panic.
+4. Add the following snippet within your newly placed `<end>` tag. Evaluate if error is `nil`, if so panic. Since we're serverless it is safe to panic :).
 
 		if err != nil {
 			panic(err)
 		}
 
-Add the following snippet within your newly placed `<end>` tag. This will update the field value `FieldOne` to `"NewValue"`.
+Add the following snippet within your newly placed `<end>` tag. This will update the field value of `FieldOne` to `"NewValue"`.
 
 	t.FieldOne = "NewValue"
 
