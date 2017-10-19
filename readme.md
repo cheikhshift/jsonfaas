@@ -16,8 +16,8 @@ Your OpenFaaS gateway is at `http://localhost:8080`. TO update your gateway path
 ## Setup
 
 ### Github Repo
-You will need a Github repository to successfully download your package's dependencies automatically.
-1. Create a new repository with local folder path template : `$GOPATH/src/github.com/yourusername/foldername`
+You will need a Git repository accessible online to successfully download your package's dependencies automatically. With this example I used this repository.
+1. Create a new repository with local folder path template : `$GOPATH/src/{github.com || or other git service}/yourusername/foldername`
 
 ### GOS project
 Change your working directory to the github repository you've just created.
